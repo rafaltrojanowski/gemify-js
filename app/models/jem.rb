@@ -39,12 +39,12 @@ class Jem < ActiveRecord::Base
 
   def delete_github_repository
     client = github_login
-    client.delete_repository("gemify-js/#{self.name}")
+    client.delete_repository("gemify/#{self.name}")
   end
 
 
   def set_ssh_url(repository)
-    self.gem_repo = 'http://www.github.com/gemify-js/' + self.name
+    self.gem_repo = 'http://www.github.com/gemify/' + self.name
     self.ssh_url = repository.ssh_url
     self.save
 
@@ -60,7 +60,7 @@ class Jem < ActiveRecord::Base
 
   def get_ssh_url
     client = github_login
-    repository = client.repository("gemify-js/#{self.name}")
+    repository = client.repository("gemify/#{self.name}")
 
     self.ssh_url = repository.ssh_url
     self.save
@@ -142,7 +142,7 @@ class Jem < ActiveRecord::Base
 
   def delete_jem_repo
     client = github_login
-    client.delete_repository("gemify-js/#{self.name}")
+    client.delete_repository("gemify/#{self.name}")
   end
 
 
@@ -179,7 +179,7 @@ class Jem < ActiveRecord::Base
 
   def has_repo?
     client = github_login
-    result = client.repository?("gemify-js/#{self.name}")
+    result = client.repository?("gemify/#{self.name}")
     if result == true
       errors.add(:name, "already exists on Github")
       return result
@@ -226,7 +226,7 @@ class Jem < ActiveRecord::Base
 
     def set_default
      self.homepage = "http://gemifyjs.com" unless self.homepage
-     self.github = "https://github.com/gemify-js" unless self.github
+     self.github = "https://github.com/gemify" unless self.github
      self.email = "no@email.com" unless self.email
      self.save
    end

@@ -62,3 +62,4 @@ gem 'net-ssh', '2.7.0'
 gem 'rake', '10.3.1'
 gem "typhoeus"
 
+gem 'dropzonejs-rails'
